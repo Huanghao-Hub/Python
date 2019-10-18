@@ -1,0 +1,37 @@
+import csv
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+def score_Dis():#统计年龄分布
+    pr1 = pd.read_csv(r"D:\python\10movie.csv")
+    print("统计电影评分分布：")
+    print()
+    rating_score = []
+    for i in pr1['rating_score']:
+        rating_score.append(float((i)))
+    print(rating_score)
+    score1=[]
+    score2=[]
+    score3=[]
+    score4=[]
+    score5=[]
+    for i in rating_score:
+        if 9.6<=i<10.0:
+            score1.append(i)
+        elif 9.2<=i<9.6:
+            score2.append(i)
+        elif 8.8<=i<9.2:
+            score3.append(i)
+        elif 8.4<=i<8.8:
+            score4.append(i)
+        else:
+            score5.append(i)
+
+    index=['9.6~10','9.2~9.6','8.8~9.2','8.4~8.8','others']
+    values=[len(score1),len(score2),len(score3),len(score4),len(score5)]
+    plt.bar(index,values)
+    plt.show()
+   
+if __name__=="__main__":
+    score_Dis()
